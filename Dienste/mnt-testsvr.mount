@@ -1,0 +1,13 @@
+[Unit]
+Description=Mount der Laptop-Freigabe
+Requires=network-online.target
+After=network-online.service
+
+[Mount]
+What=//192.168.10.200/Testdaten_SVR/
+Where=/mnt/testsvr
+Options=username=,password=,rw
+Type=cifs
+
+[Install]
+WantedBy=multi-user.target

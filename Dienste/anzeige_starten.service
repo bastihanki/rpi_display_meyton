@@ -1,0 +1,19 @@
+[Unit]
+Description=Python Script für die Anzeige starten
+Requires=mnt-testsvr.mount
+After=mnt-testsvr.mount
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/display
+ExecStart=python3 /opt/display/display.py
+ExecStop=cp /opt/display/template/liste1.html /opt/display/temp/
+SyslogIdentifier=python
+StandardOutput=syslog
+StandardError=syslog
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
